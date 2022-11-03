@@ -1,5 +1,6 @@
 # maven-test
 
+--------Expt 8--------
 ##Docker Commands##
 //install docker
 sudo apt install curl
@@ -59,6 +60,60 @@ docker rm <container-id>
 
 //removing image
 docker rmi <container-id>
+  
+
+  
+--------Expt 9----------
+##Dockerfile Instructions##
+mkdir 120A3053
+cd 120A3053
+nano Dockerfile
+//paste below code
+FROM ubuntu:latest
+MAINTAINER "SHREYASH"
+RUN apt update -y
+RUN apt install nginx -y
+EXPOSE 80
+COPY index.html /var/www/html/index.html
+CMD ["nginx", "-g", "daemon off;"]
+//back in terminal
+sudo docker build -t testfile2 .
+sudo su
+docker run -itd -p 8089:80 testfile2
+docker ps
+//take containder id from above command
+docker commit 659e1f7ed627 shreyash/docker-test:v1
+docker login
+
+  
+//docker volume
+docker volume create vol1
+docker volume inspect vol1
+ls /var/lib/docker/volumes/vol1/_data
+docker images
+docker run -it -p 8050:80 --mount source=vols,target=/var/www/html/ bushsk/ngnix_webapp:v1 bash
+ls /var/www/html/
+  
+--------expt 7-------
+//puppet
+sudo su
+hostnamectl set-hostname puppet-master
+hostname 
+exit
+sudo su  
+ifconfig
+//take inet from ifconfig
+//in other pc run below command
+echo $(hostname -I) $(hostname)
+//take ip from above command
+  
+// in your pc run following command
+nano /etc/host
+//this will open nano. inside nano in last line, add following
+//<ip address of puppet agent>   puppet-agent
+ping puppet-agent
+
+
 
 
 
