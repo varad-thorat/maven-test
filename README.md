@@ -1,1 +1,68 @@
 # maven-test
+
+##Docker Commands##
+//install docker
+sudo apt install curl
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+//run whalesay
+sudo su
+docker pull docker/whalesay
+docker images
+docker run docker/whalesay cowsay hello_you
+docker pull bushsk/ngnix_webapp:v1
+docker run -itd --name shreyash 8989:80 bushsk/ngnix_webapp:v1
+//test at localhost://8283
+docker images
+docker pull ubuntu:latest
+docker images
+docker run -it ubuntu:latest bash 
+apt update 
+apt install apache2
+cd /var/www/html
+mv index.html index.backup
+ls
+apt install nano
+nano index.html
+//paste this in nano
+<html>
+<title> First page</title> <body bgcolor="pink"> Our home Page </body> </html>
+service apache2 start
+service apache2 status
+//go to other terminal
+sudo su
+docker images
+//take the id of ubuntu which u pulled earlier and user other name instead of shreyash/ub_apache:v1
+docker tag a8780b506fa4 shreyash/ub_apache:v1
+docker images
+docker ps
+//take container id of ubuntu:latest
+docker commit d9658a294217 shreyash/ub_apache:v1
+docker images
+ufw allow 8283
+docker ps
+docker run -itd -p 8283:80 --name test shreyash/ub_apache:v1
+// test at localhost://8283
+
+//docker push part
+//login in hub
+//login in terminal
+docker login
+docker push shreyash/ub_apache:v1
+
+//stopping the container using container id
+docker ps
+//take container id from abover command
+docker stop <container-id>
+docker kill <container-id>
+docker rm <container-id>
+
+//removing image
+docker rmi <container-id>
+
+
+
+
+
+
+
