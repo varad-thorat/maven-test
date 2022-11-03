@@ -1,0 +1,18 @@
+--------expt 7-------
+//puppet
+sudo su
+hostnamectl set-hostname puppet-master
+hostname 
+exit
+sudo su  
+ifconfig
+//take inet from ifconfig
+//in other pc run below command
+echo $(hostname -I) $(hostname)
+//take ip from above command
+  
+// in your pc run following command
+nano /etc/host
+//this will open nano. inside nano in last line, add following
+//<ip address of puppet agent>   puppet-agent
+ping puppet-agent
