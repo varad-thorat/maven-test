@@ -5,3 +5,7 @@ public class SumOfNumbers {
     }
 
 }
+
+//Execute Windows batchfile commands
+// javac SumOfNumbers.java
+// java SumOfNumbers %x% %y%

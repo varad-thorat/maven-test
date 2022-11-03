@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    tools { 
+        maven 'Maven' 
+    }
+    stages{
+        stage("Git Clone"){
+            steps{
+                git 'https://github.com/shreyashkadam/hello-world.git'
+            }
+        }
+        stage("Build"){
+            steps{
+                bat 'mvn clean install'
+            }
+        }
+        stage("Deploy"){
+            steps{
+               bat 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\demo_pipeline\\webapp\\target\\webapp.war "C:\\Program Files\\apache-tomcat-9.0.65\\webapps"'
+            }
+        }	
+    }
+}
